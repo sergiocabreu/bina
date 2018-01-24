@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
+import { MyOwnCustomMaterialModuleModule } from './my-own-custom-material-module/my-own-custom-material-module.module';
+import { ContatosComponent } from './contatos/contatos.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContatosComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, MyOwnCustomMaterialModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
