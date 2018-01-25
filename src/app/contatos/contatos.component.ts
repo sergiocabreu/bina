@@ -34,13 +34,13 @@ export class ContatosComponent implements OnInit {
   }
 
   public chamar(ip: string, nome: string) {
-    this.binaService.chamar(ip, nome, this.texto);
     let msg;
     if (this.texto) {
       msg = this.texto;
     } else {
       msg = 'Atende ai!!!!';
     }
+    this.binaService.chamar(ip, nome, msg);
     
     this.messageService.add({severity:'success', summary: nome, detail: msg});
   }
