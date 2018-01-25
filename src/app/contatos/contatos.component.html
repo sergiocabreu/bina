@@ -1,15 +1,7 @@
-<mat-grid-list cols="4" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let u of usuarios">
-        {{u.name}}
-    </mat-grid-tile>
-  <!--<mat-card *ngFor="let u of usuarios" style="width: 400px;">
-      <mat-card-title>
-        {{u.name}}
-      </mat-card-title>
-      <mat-card-actions>
-        <button mat-button>LIGAR</button>
-      </mat-card-actions>
-  </mat-card>-->
+<p-growl></p-growl>
+<p class="ui-g-12 blue">*clique no nome para chamar</p>
 
+<p-card title="{{u.name}}" *ngFor="let u of usuarios" class="ui-g-3 ui-md-4 ui-sm-12"
+(click)="chamar(u.name)">
 
- </mat-grid-list>
+</p-card>

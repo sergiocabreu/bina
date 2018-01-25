@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+import {MessageService} from 'primeng/components/common/messageservice';
+import {Message} from 'primeng/components/common/api';
+
 @Component({
   selector: 'contatos',
   templateUrl: './contatos.component.html',
-  styleUrls: ['./contatos.component.css']
+  styleUrls: ['./contatos.component.css'],
+  providers: [MessageService]
 })
 export class ContatosComponent implements OnInit {
+
+  //msgs: Message[] = [];
 
   usuarios = [
     { id: 11, name: 'Mr. Nice' },
@@ -20,9 +26,12 @@ export class ContatosComponent implements OnInit {
     { id: 20, name: 'Tornado' }
   ];
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
   }
 
+  public chamar(nome: string) {
+    this.messageService.add({severity:'success', summary: 'Chamando ' + nome + '...'});
+  }
 }

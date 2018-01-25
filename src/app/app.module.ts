@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { MyOwnCustomMaterialModuleModule } from './my-own-custom-material-module/my-own-custom-material-module.module';
+import { CustomPrimengModule } from './custom-primeng/custom-primeng.module';
 import { ContatosComponent } from './contatos/contatos.component';
 
 
@@ -12,7 +12,7 @@ import { ContatosComponent } from './contatos/contatos.component';
     ContatosComponent
   ],
   imports: [
-    BrowserModule, MyOwnCustomMaterialModuleModule
+    BrowserModule, CustomPrimengModule
   ],
   providers: [],
   bootstrap: [AppComponent]
