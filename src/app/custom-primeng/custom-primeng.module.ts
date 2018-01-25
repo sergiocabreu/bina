@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { GrowlModule } from 'primeng/growl';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   imports: [
@@ -15,13 +16,15 @@ import { GrowlModule } from 'primeng/growl';
     FormsModule,
     ButtonModule,
     CardModule,
-    GrowlModule
+    GrowlModule,
+    InputTextModule
   ], 
   exports: [
     BrowserAnimationsModule,
     ButtonModule,
     CardModule,
-    GrowlModule
+    GrowlModule,
+    InputTextModule
   ], 
   declarations: []
 })

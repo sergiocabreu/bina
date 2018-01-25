@@ -1,37 +1,51 @@
 import { Component, OnInit } from '@angular/core';
+import {ViewEncapsulation} from '@angular/core';
 
-import {MessageService} from 'primeng/components/common/messageservice';
-import {Message} from 'primeng/components/common/api';
+
+import { MessageService } from 'primeng/components/common/messageservice';
+import { Message } from 'primeng/components/common/api';
+
+import { BinaService } from './../servicos/bina.service'
+import { Observable } from 'rxjs/Observable';
+import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'contatos',
   templateUrl: './contatos.component.html',
   styleUrls: ['./contatos.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
+  encapsulation: ViewEncapsulation.None
 })
 export class ContatosComponent implements OnInit {
 
-  //msgs: Message[] = [];
+  users: any;
+  texto: string;
 
-  usuarios = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
-  ];
-
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              private binaService: BinaService
+  ) { }
 
   ngOnInit() {
+    this.binaService.listarContatos().subscribe(data => {
+      this.users = data.usuario;
+    }), error => {
+      console.log('teste' + error);
+    };
   }
 
-  public chamar(nome: string) {
-    this.messageService.add({severity:'success', summary: 'Chamando ' + nome + '...'});
+  public chamar(ip: string, nome: string) {
+    this.binaService.chamar(ip, nome, this.texto);
+    let msg;
+    if (this.texto) {
+      msg = this.texto;
+    } else {
+      msg = 'Atende ai!!!!';
+    }
+    
+    this.messageService.add({severity:'success', summary: nome, detail: msg});
+  }
+
+  public limpar() {
+    this.texto = '';
   }
 }

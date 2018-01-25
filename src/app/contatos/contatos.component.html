@@ -1,7 +1,15 @@
 <p-growl></p-growl>
-<p class="ui-g-12 blue">*clique no nome para chamar</p>
+<p-growl [(value)]="msgs"></p-growl>
 
-<p-card title="{{u.name}}" *ngFor="let u of usuarios" class="ui-g-3 ui-md-4 ui-sm-12"
-(click)="chamar(u.name)">
+<div class="ui-g-12 ui-md-12 ui-sm-12" >
+  <h4 class="first">Mensagem</h4>
+  <input id="input" type="texto" size="30" pInputText [(ngModel)]="texto"> 
+  <button pButton type="button" label="limpar" (click)="limpar()" ></button>
+</div>
 
-</p-card>
+<div style="text-align:center">
+  <p-card title="{{u.nome}}" subtitle="{{u.ip}}" *ngFor="let u of users" 
+  class="ui-g-3 ui-md-4 ui-sm-12" 
+  styleClass="meu-card" (click)="chamar(u.ip, u.nome)">
+  </p-card>
+</div>
