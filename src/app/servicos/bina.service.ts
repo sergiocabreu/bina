@@ -9,12 +9,15 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class BinaService {
+  
+  servidor = 'http://svtcedevap3.tce.ce.gov.br:8880';
 
   constructor(public http: Http) { }
 
+
   public listarContatos() : Observable<any> {
     
-    let url = 'http://172.26.23.216:8080/BinaWS/rest/bina/usuarios';
+    let url =  this.servidor + '/BinaWS/rest/bina/usuarios';
 
     let options = new RequestOptions({ headers: new Headers({ 'Content-Type': 'application/json' }) });
 
@@ -28,7 +31,7 @@ export class BinaService {
    
    public chamar(ip: string, nome: string, mensagem: string)  {
 
-    let url = 'http://172.26.23.216:8080/BinaWS/rest/bina/send';
+    let url = this.servidor + '/BinaWS/rest/bina/send';
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
